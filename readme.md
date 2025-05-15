@@ -6,8 +6,6 @@
 
 **Note**: This backend service is part of the larger CFiot-web-dashboard project, but it can be cloned, configured, and run independently.
 
-**Repository**: CFiot-web-backend (standalone backend API service)
-
 ## Project Structure
 
 ```
@@ -29,9 +27,6 @@
 - [Running Locally](#running-locally)
 - [Running with Docker](#running-with-docker)
 - [API Endpoints](#api-endpoints)
-- [Database Schema](#database-schema)
-- [CORS](#cors)
-- [License](#license)
 
 ## Features
 
@@ -235,37 +230,3 @@ Optimize pickup route given a list of locations.
     ]
   }
   ```
-
-## Database Schema
-
-Ensure the following tables exist in your PostgreSQL database:
-
-```sql
-CREATE TABLE sensor_data (
-  lokasi_id TEXT,
-  latitude FLOAT,
-  longitude FLOAT,
-  timestamp TIMESTAMP,
-  fill_percentage FLOAT,
-  ch4 FLOAT,
-  nh3 FLOAT
-);
-
-CREATE TABLE predictions (
-  lokasi_id TEXT,
-  prediction_time TIMESTAMP,
-  fill_percentage FLOAT,
-  ch4 FLOAT,
-  nh3 FLOAT,
-  need_pickup BOOLEAN,
-  gas_exceeded_threshold BOOLEAN
-);
-```
-
-## CORS
-
-CORS is configured to allow all origins.
-
-## License
-
-This project is licensed under the MIT License.
