@@ -1,8 +1,24 @@
-# WasteWatch Smart Bin Dashboard API
+# WasteWatch Smart Bin Backend API
 
 **Course**: SI5038701 - Cloud and Fog Computing in the Internet of Things
 
 **Provides bin locations, KPIs, history, forecasts, alerts, and route optimization**
+
+**Note**: This backend service is part of the larger CFiot-web-dashboard project, but it can be cloned, configured, and run independently.
+
+**Repository**: CFiot-web-backend (standalone backend API service)
+
+## Project Structure
+
+```
+.
+├── app.py            # FastAPI application entry point
+├── Dockerfile        # Containerization instructions
+├── requirements.txt  # Python dependencies
+├── readme.md         # This documentation
+├── .env.example      # Example environment configuration
+└── .gitignore        # Git ignore rules
+```
 
 ## Table of Contents
 
@@ -50,19 +66,15 @@ This approach ensures scalable and efficient route planning for IoT-enabled smar
 ## Installation
 
 1. **Clone the repository**
-
    ```bash
    git clone git@github.com:satyaadhiyaksaardy/CFiot-web-backend.git
    cd CFiot-web-backend
    ```
-
 2. **Create and activate a virtual environment**
-
    ```bash
    python3 -m venv venv
    source venv/bin/activate
    ```
-
 3. **Install dependencies**
    ```bash
    pip install --no-cache-dir -r requirements.txt
@@ -70,9 +82,15 @@ This approach ensures scalable and efficient route planning for IoT-enabled smar
 
 ## Configuration
 
-Create a `.env` file in the `backend` directory with the following variables:
+Create a `.env` file in the project root directory with the following variables:
 
+Copy the provided `.env.example` to `.env` and fill in your values:
+
+```bash
+cp .env.example .env
 ```
+
+```env
 DB_HOST=<your-db-host>
 DB_PORT=<your-db-port>
 DB_USER=<your-db-user>
@@ -82,7 +100,7 @@ DB_NAME=<your-db-name>
 
 ## Running Locally
 
-Start the API server with Uvicorn:
+Start the API server:
 
 ```bash
 uvicorn app:app --reload --host 0.0.0.0 --port 8000
@@ -95,15 +113,10 @@ Open your browser and navigate to:
 
 ## Running with Docker
 
-Build the Docker image:
+Build the Docker image and run the container:
 
 ```bash
 docker build -t wastewatch-backend .
-```
-
-Run the container:
-
-```bash
 docker run -d -p 8000:8000 \
   -e DB_HOST=<db-host> \
   -e DB_PORT=<db-port> \
